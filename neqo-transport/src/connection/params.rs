@@ -91,7 +91,7 @@ impl Default for ConnectionParameters {
             max_streams_uni: LOCAL_STREAM_LIMIT_UNI,
             ack_ratio: DEFAULT_ACK_RATIO,
             idle_timeout: DEFAULT_IDLE_TIMEOUT,
-            initial_rtt:  Rtt:INITIAL_RTT,
+            initial_rtt:  INITIAL_RTT,
             preferred_address: PreferredAddressConfig::Default,
             datagram_size: 0,
             outgoing_datagram_queue: MAX_QUEUED_DATAGRAMS_DEFAULT,
