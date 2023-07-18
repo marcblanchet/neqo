@@ -296,6 +296,10 @@ struct QuicParameters {
     /// The idle timeout for connections, in seconds.
     idle_timeout: u64,
 
+    #[structopt(long = "initialRTT", default_value = "100")]
+    /// The initial RTT for connections, in milliseconds.
+    initial_rtt: u64,
+
     #[structopt(long = "cc", default_value = "newreno")]
     /// The congestion controller to use.
     congestion_control: CongestionControlAlgorithm,
@@ -307,6 +311,7 @@ impl QuicParameters {
             .max_streams(StreamType::BiDi, self.max_streams_bidi)
             .max_streams(StreamType::UniDi, self.max_streams_uni)
             .idle_timeout(Duration::from_secs(self.idle_timeout))
+            .initial_rtt(Duration::from_millis(self.initial_rtt))
             .cc_algorithm(self.congestion_control);
 
         if let Some(&first) = self.quic_version.first() {
